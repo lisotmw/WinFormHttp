@@ -208,7 +208,6 @@ namespace BackendClient.Code
             url = CheckUrl(url);
 
             string token = Config.Get("token");
-
             //FormUrlEncodedContent content = new FormUrlEncodedContent(param);
             if (token != null && token != "")
             {
