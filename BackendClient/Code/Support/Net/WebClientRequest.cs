@@ -234,7 +234,7 @@ namespace BackendClient.Code
                 return "http://" + url;
         }
 
-        public static string buildHttpParamStr(string url, Dictionary<string, object> dic)
+        public static string buildHttpParamStr(string url, Dictionary<string, string> dic)
         {
             //q=vs+C%23+代码补全&qs=n&form=QBRE&sp=-1
             string httpParam = "";
@@ -251,7 +251,7 @@ namespace BackendClient.Code
                 // www.xx.com?a=b
                 url += "&";
             }
-            foreach (KeyValuePair<string, object> kv in dic)
+            foreach (KeyValuePair<string, string> kv in dic)
             {
                 httpParam = httpParam + $"{ kv.Key}={kv.Value}&";
             }
