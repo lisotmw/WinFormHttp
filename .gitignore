@@ -2,3 +2,5 @@ BackendClient/bin
 BackendClient/obj
 BackendClient/Properties
 *.exe
+*.csproj
+.vs/
