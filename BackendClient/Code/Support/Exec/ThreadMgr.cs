@@ -67,19 +67,24 @@ namespace BackendClient.Code.Support.Exec
             SemaphoreLicense.getInstance().Acquire();
             CountDown.CountDown();
             string res = "";
+            Thread.Sleep(2000);
             switch (ReqMod)
             {
                 case ReqEnums.DO_GET:
-                    res = WebClientRequest.GetAsync(Url, ContentData).Result;
+                    res = "{\"code\":0,\"message\":\"success\",\"data\":{\"token\":\"Bearer e86585728b914771b793f1fb05e49676\",\"ref0\":\"ae213e3e - baa6 - 4379 - 928a - 5f3692e0ffd6\"}}";
+                    //res = WebClientRequest.GetAsync(Url, ContentData).Result;
                     break;
                 case ReqEnums.DO_PUT:
-                    res = WebClientRequest.PutAsync(Url, ContentData).Result;
+                    res = "{\"code\":0,\"message\":\"success\",\"data\":{\"token\":\"Bearer e86585728b914771b793f1fb05e49676\",\"ref0\":\"ae213e3e - baa6 - 4379 - 928a - 5f3692e0ffd6\"}}";
+                    //res = WebClientRequest.PutAsync(Url, ContentData).Result;
                     break;
                 case ReqEnums.DO_DELETE:
-                    res = WebClientRequest.DeleteAsync(Url, ContentData).Result;
+                    res = "{\"code\":0,\"message\":\"success\",\"data\":{\"token\":\"Bearer e86585728b914771b793f1fb05e49676\",\"ref0\":\"ae213e3e - baa6 - 4379 - 928a - 5f3692e0ffd6\"}}";
+                    //res = WebClientRequest.DeleteAsync(Url, ContentData).Result;
                     break;
                 case ReqEnums.DO_POST:
-                    res = WebClientRequest.PostJsonAsync(Url, ContentData).Result;
+                    res = "{\"code\":0,\"message\":\"success\",\"data\":{\"token\":\"Bearer e86585728b914771b793f1fb05e49676\",\"ref0\":\"ae213e3e - baa6 - 4379 - 928a - 5f3692e0ffd6\"}}";
+                    //res = WebClientRequest.PostJsonAsync(Url, ContentData).Result;
                     break;
                 default:
                     break;

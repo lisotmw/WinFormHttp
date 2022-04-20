@@ -13,6 +13,7 @@ using BackendClient.Code.Service.interf;
 using BackendClient.Code.Service.abs;
 using BackendClient.Code.Support.Bean;
 using BackendClient.Code.Service.config;
+using System.Threading;
 
 namespace BackendClient
 {
@@ -35,6 +36,22 @@ namespace BackendClient
         //返回数据：{"code":0,"message":"success","data":{"token":"Bearer e86585728b914771b793f1fb05e49676","ref0":"ae213e3e-baa6-4379-928a-5f3692e0ffd6"}}
         private void loginButton_Click(object sender, EventArgs e)
         {
+            
+            Boolean Test = true;
+            if (Test)
+            {
+                // 走方案一：
+                MessageQueue.poll(new Msg(SynchronizationContext.Current, new Dictionary<string, object>() {
+                { "username","liz" },
+                { "password","123456" }
+                },
+                (res) =>
+                {
+                    serverAddressText.Text = res.ToString();
+                }));
+                return;
+            }
+
             // TODO 192.168.101.157:3000
             Config.Set("serverIp", serverAddressText.Text);
             // Test
@@ -44,21 +61,23 @@ namespace BackendClient
             userName = "admin";
             password = "123456";
 
-            if(serverAddressText.Text == "")
-            {
-                MessageBox.Show("please fill serverAddress");
-                return;
-            }
-            if (userName == "")
-            {
-                MessageBox.Show("please fill userName");
-                return;
-            }
-            if (password == "")
-            {
-                MessageBox.Show("please fill password");
-                return;
-            }
+            //if(serverAddressText.Text == "")
+            //{
+            //    MessageBox.Show("please fill serverAddress");
+            //    return;
+            //}
+            //if (userName == "")
+            //{
+            //    MessageBox.Show("please fill userName");
+            //    return;
+            //}
+            //if (password == "")
+            //{
+            //    MessageBox.Show("please fill password");
+            //    return;
+            //}
+
+            
 
             loginService.RequestLoginDelegate<LoginResBody>(userName, password,(object res)=> {
                 LoginResBody res0 = (LoginResBody)res;

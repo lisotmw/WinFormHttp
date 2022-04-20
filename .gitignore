@@ -4,3 +4,4 @@ BackendClient/Properties
 *.exe
 *.csproj
 .vs/
+packages/
